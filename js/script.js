@@ -1,76 +1,46 @@
-// Dark Mode Toggle Functionality
-class ThemeManager {
+// Mobile overlay menu
+class MobileMenu {
   constructor() {
-    this.darkModeToggle = document.getElementById("darkModeToggle");
-    this.body = document.body;
-    this.currentTheme = localStorage.getItem("theme") || "light";
-
-    this.init();
-  }
-
-  init() {
-    // Set initial theme
-    this.setTheme(this.currentTheme);
-
-    // Add event listener
-    this.darkModeToggle.addEventListener("click", () => this.toggleTheme());
-  }
-
-  setTheme(theme) {
-    this.body.setAttribute("data-theme", theme);
-    this.darkModeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
-    localStorage.setItem("theme", theme);
-    this.currentTheme = theme;
-  }
-
-  toggleTheme() {
-    const newTheme = this.currentTheme === "light" ? "dark" : "light";
-    this.setTheme(newTheme);
-  }
-}
-
-// Mobile Navigation
-class MobileNavigation {
-  constructor() {
-    this.mobileMenuBtn = document.getElementById("mobileMenuBtn");
-    this.navLinks = document.getElementById("navLinks");
+    this.btn = document.getElementById("menuBtn");
+    this.menu = document.getElementById("mobileMenu");
     this.isOpen = false;
 
     this.init();
   }
 
   init() {
-    this.mobileMenuBtn.addEventListener("click", () => this.toggleMenu());
+    this.btn.addEventListener("click", () => this.toggle());
 
-    // Close menu when clicking on a link
-    this.navLinks.addEventListener("click", (e) => {
+    // Close when a menu link is clicked
+    this.menu.addEventListener("click", (e) => {
       if (e.target.tagName === "A") {
-        this.closeMenu();
-      }
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".nav") && this.isOpen) {
-        this.closeMenu();
+        this.close();
       }
     });
   }
 
-  toggleMenu() {
-    this.isOpen = !this.isOpen;
-    this.navLinks.classList.toggle("active", this.isOpen);
-    this.mobileMenuBtn.textContent = this.isOpen ? "✕" : "☰";
+  toggle() {
+    this.isOpen ? this.close() : this.open();
   }
 
-  closeMenu() {
+  open() {
+    this.isOpen = true;
+    this.menu.classList.add("open");
+    this.btn.classList.add("open");
+    this.btn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  close() {
     this.isOpen = false;
-    this.navLinks.classList.remove("active");
-    this.mobileMenuBtn.textContent = "☰";
+    this.menu.classList.remove("open");
+    this.btn.classList.remove("open");
+    this.btn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
   }
 }
 
-// Smooth Scrolling for Navigation Links
+// Smooth Scrolling for anchor links
 class SmoothScrolling {
   constructor() {
     this.init();
@@ -78,26 +48,24 @@ class SmoothScrolling {
 
   init() {
     document.addEventListener("click", (e) => {
-      if (e.target.matches('a[href^="#"]')) {
-        e.preventDefault();
-        const targetId = e.target.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
 
-        if (targetElement) {
-          const headerHeight = document.querySelector(".header").offsetHeight;
-          const targetPosition = targetElement.offsetTop - headerHeight;
+      const targetId = link.getAttribute("href").substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (!targetElement) return;
 
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-        }
-      }
+      e.preventDefault();
+      const headerHeight = document.querySelector(".header").offsetHeight;
+      const targetPosition =
+        targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
     });
   }
 }
 
-// Contact Form Handler
+// Contact Form Handler (EmailJS)
 class ContactForm {
   constructor() {
     this.form = document.getElementById("contactForm");
@@ -110,6 +78,11 @@ class ContactForm {
 
   async handleSubmit(e) {
     e.preventDefault();
+
+    const submitBtn = this.form.querySelector("button[type=submit]");
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
 
     try {
       // Get form data
@@ -139,37 +112,27 @@ class ContactForm {
         "Sorry, there was an error sending your message. Please try again.",
         "error"
       );
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
     }
   }
 
   showMessage(message, type) {
-    // Create message element
     const messageEl = document.createElement("div");
     messageEl.textContent = message;
-    messageEl.style.cssText = `
-                    position: fixed;
-                    top: 100px;
-                    right: 20px;
-                    background: ${type === "success" ? "#10b981" : "#ef4444"};
-                    color: white;
-                    padding: 1rem 2rem;
-                    border-radius: 10px;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                    z-index: 10000;
-                    animation: slideIn 0.3s ease;
-                `;
+    messageEl.className = `toast ${type === "error" ? "error" : ""}`;
 
     document.body.appendChild(messageEl);
 
-    // Remove message after 5 seconds
     setTimeout(() => {
-      messageEl.style.animation = "slideOut 0.3s ease";
+      messageEl.classList.add("out");
       setTimeout(() => messageEl.remove(), 300);
     }, 5000);
   }
 }
 
-// Intersection Observer for Animations
+// Reveal-on-scroll animations
 class ScrollAnimations {
   constructor() {
     this.init();
@@ -180,54 +143,97 @@ class ScrollAnimations {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.style.animation = "fadeInUp 0.6s ease forwards";
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
-    // Observe all sections except hero
-    document.querySelectorAll(".section").forEach((section) => {
-      section.style.opacity = "0";
-      observer.observe(section);
-    });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   }
 }
 
-// Header Scroll Effect
+// Statement: words light up progressively as you scroll (Framer-style)
+class StatementReveal {
+  constructor() {
+    this.el = document.getElementById("statementText");
+    if (!this.el) return;
+
+    // Split text into word spans
+    const words = this.el.textContent.trim().split(/\s+/);
+    this.el.innerHTML = words
+      .map((w) => `<span class="w">${w}</span>`)
+      .join(" ");
+    this.words = this.el.querySelectorAll(".w");
+
+    this.onScroll = this.onScroll.bind(this);
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  onScroll() {
+    const rect = this.el.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    // Progress: 0 when the text enters the lower viewport, 1 when its
+    // bottom clears the upper third of the screen
+    const start = vh * 0.85;
+    const end = vh * 0.35;
+    const progress = (start - rect.top) / (start - end + rect.height);
+    const clamped = Math.max(0, Math.min(1, progress));
+    const lit = Math.floor(clamped * this.words.length);
+
+    this.words.forEach((w, i) => w.classList.toggle("lit", i < lit));
+  }
+}
+
+// Header: hide on scroll down, show on scroll up
 class HeaderScrollEffect {
   constructor() {
-    this.header = document.querySelector(".header");
+    this.header = document.getElementById("header");
     this.init();
   }
 
   init() {
     let lastScrollY = window.scrollY;
 
-    window.addEventListener("scroll", () => {
-      const currentScrollY = window.scrollY;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentScrollY = window.scrollY;
 
-      if (currentScrollY > 100) {
-        this.header.style.transform =
-          currentScrollY > lastScrollY ? "translateY(-100%)" : "translateY(0)";
-        this.header.style.boxShadow = "var(--shadow)";
-      } else {
-        this.header.style.transform = "translateY(0)";
-        this.header.style.boxShadow = "none";
-      }
+        if (currentScrollY > 140 && currentScrollY > lastScrollY) {
+          this.header.classList.add("hidden");
+        } else {
+          this.header.classList.remove("hidden");
+        }
 
-      lastScrollY = currentScrollY;
-    });
+        lastScrollY = currentScrollY;
+      },
+      { passive: true }
+    );
+  }
+}
+
+// Footer year
+class FooterYear {
+  constructor() {
+    const el = document.getElementById("year");
+    if (el) {
+      el.textContent = new Date().getFullYear();
+    }
   }
 }
 
 // Initialize all components when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  new ThemeManager();
-  new MobileNavigation();
+  new MobileMenu();
   new SmoothScrolling();
   new ContactForm();
   new ScrollAnimations();
+  new StatementReveal();
   new HeaderScrollEffect();
+  new FooterYear();
 });

@@ -1,228 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leon John - Software Developer & AI Automation Specialist</title>
-    
+    <title>Leon John — Software Developer</title>
+    <meta name="description"
+        content="Leon John — software developer based in Nairobi, Kenya. I build backend systems, REST APIs and AI automations that help businesses ship faster and trust their data.">
+
+    <!-- Fonts: Archivo (display) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
     <!-- CSS Styles -->
-     <link rel="stylesheet" href="css/style.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-     <script type="text/javascript">
-        (function() {
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
             emailjs.init("PjH9zM3OGv5MdJAQF"); //  EmailJS public key
         })();
-     </script>
+    </script>
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <a href="#home" class="logo">Leon</a>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#skills">Skills & Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-        </nav>
+
+    <!-- ================= HEADER ================= -->
+    <header class="header" id="header">
+        <div class="nav container">
+            <a href="#top" class="logo">Leon John<sup>©</sup></a>
+
+            <nav class="nav-center" aria-label="Primary">
+                <a href="#services">Services</a>
+                <a href="#work">Work</a>
+                <a href="#credentials">Credentials</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="#contact" class="btn btn-dark nav-cta">Let's Talk</a>
+                <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
+    <!-- Mobile overlay menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav aria-label="Mobile">
+            <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <a href="#credentials">Credentials</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="mobile-menu-foot">
+            <a href="mailto:leonjohn7co@gmail.com">leonjohn7co@gmail.com</a>
+        </div>
+    </div>
+
+    <main id="top">
+
+        <!-- ================= HERO ================= -->
+        <section class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 class="hero-title">Hi, I'm Leon </h1>
-                        <p class="hero-subtitle">Software Developer & AI Automation builder</p>
-                        <p class="hero-description">
-                            Crafting innovative digital solutions through cutting-edge web development, 
-                            Android applications, and intelligent automation systems that drive business growth.
-                        </p>
-                        
-                        <div class="skills-tags">
-                            <span class="skill-tag">Web Development</span>
-                            <span class="skill-tag">Android Apps</span>
-                            <span class="skill-tag">AI Automation</span>
+                <h1 class="hero-title" aria-label="Software Developer">
+                    <span class="hero-row">
+                        <span class="hero-line"><span class="hero-line-inner">SOFTWARE</span></span>
+                    </span>
+                    <span class="hero-meta-row">
+                        <span class="hero-copy">©2026</span>
+                        <span class="hero-tags">
+                            <span>/CREATING SINCE 2023</span>
+                            <span>/BASED IN NAIROBI, KENYA</span>
+                        </span>
+                    </span>
+                    <span class="hero-row">
+                        <span class="hero-line"><span class="hero-line-inner hero-line-2">DEVELOPER</span></span>
+                    </span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- ================= INTRO ================= -->
+        <section class="intro">
+            <div class="container intro-grid">
+                <div class="intro-side reveal">
+                    <div class="intro-avatar">
+                        <img src="images/LEON OMAGE.jpeg" alt="Leon John">
+                    </div>
+                    <span class="intro-hey">Hey!</span>
+                </div>
+
+                <div class="intro-body">
+                    <p class="intro-lead reveal">
+                        I'm Leon, a software developer based in Nairobi, Kenya,
+                        currently building <em>CampusNest AI</em> — an AI-powered
+                        student housing platform.
+                    </p>
+                    <p class="intro-text reveal">
+                        I design and build backend systems, REST APIs and AI automations
+                        that help businesses ship faster, trust their data, and automate
+                        the work that slows them down.
+                    </p>
+                    <p class="intro-text reveal">
+                        From System design and architecture to database schema to fully developed backend, tested,
+                        documented endpoint — I own features end to end, and I've shipped AI-powered products across
+                        housing, finance and fitness.
+                    </p>
+                    <div class="reveal">
+                        <a href="#contact" class="btn btn-dark">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STATEMENT ================= -->
+        <section class="statement">
+            <div class="container">
+                <p class="statement-text" id="statementText">
+                    From idea to endpoint. Clean, reliable systems built to move fast,
+                    stay accurate, and perform in real-world use — driven by clarity,
+                    structured data, and intentional engineering.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-label">Services</span>
+                </div>
+
+                <div class="services-list">
+                    <div class="service reveal">
+                        <div class="service-title">
+                            <span class="service-index">01</span>
+                            <h3>Backend Engineering</h3>
                         </div>
-                        
+                        <ul class="service-subs">
+                            <li>API Design &amp; Development(RESTful API Integration)</li>
+                            <li>Python — Flask &amp; FastAPI</li>
+                            <li>Java - Spring Boot</li>
+                            <li>Node.js &amp; Express</li>
+                            <li>System Architecture</li>
+                            <li>System and database design</li>
+                            <li>payment gateway integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="service reveal">
+                        <div class="service-title">
+                            <span class="service-index">02</span>
+                            <h3>Data &amp; Databases</h3>
+                        </div>
+                        <ul class="service-subs">
+                            <li>MySQL Schema Design</li>
+                            <li>Database Management (PostgreSQL, MySQL, MongoDB)</li>
+                            <li>ACID Properties &amp; Database Integrity</li>
+                        </ul>
+                    </div>
+
+                    <div class="service reveal">
+                        <div class="service-title">
+                            <span class="service-index">03</span>
+                            <h3>AI &amp; Automation</h3>
+                        </div>
+                        <ul class="service-subs">
+                            <li>LLM Pipelines</li>
+                            <li>n8n Workflow Automation</li>
+                            <li>ML &amp; Predictive Modelling</li>
+                        </ul>
+                    </div>
+
+                    <div class="service reveal">
+                        <div class="service-title">
+                            <span class="service-index">04</span>
+                            <h3>Web Applications</h3>
+                        </div>
+                        <ul class="service-subs">
+                            <li>Mordern frameworks</li>
+                            <li>Responsive, clean UIs</li>
+                            <li>Testing &amp; QA </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROJECTS ================= -->
+        <section class="work section" id="work">
+            <div class="container">
+                <div class="section-head section-head-split reveal">
+                    <h2 class="section-title">Featured<br>Projects</h2>
+                    <a href="https://github.com/leox7" target="_blank" rel="noopener" class="btn btn-outline">View
+                        GitHub ↗</a>
+                </div>
+
+                <div class="work-grid">
+                    <!-- Flagship: full width -->
+                    <article class="project project-wide reveal">
+                        <div class="project-visual">
+                            <span class="project-mark">CampusNest</span>
+                            <span class="project-badge">In Progress</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-name">
+                                <h3>CampusNest AI</h3>
+                                <span class="project-cat">AI Student Housing Platform</span>
+                            </div>
+                            <p class="project-desc">
+                                Full-stack housing platform: a Node.js/Express REST API on MySQL
+                                with listing management, search and data-integrity checks that
+                                counter fraudulent listings — plus a FastAPI microservice for
+                                recommendations, fraud detection and review sentiment analysis.
+                            </p>
+                            <div class="project-tags">
+                                <span>React</span><span>Node.js</span><span>Express</span><span>MySQL</span><span>FastAPI</span><span>TestNG</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-visual">
+                            <span class="project-mark">Agent</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-name">
+                                <h3>AI Job Search Agent</h3>
+                                <span class="project-cat">Autonomous Pipeline</span>
+                            </div>
+                            <p class="project-desc">
+                                An n8n automation that scrapes listings, scores matches with the
+                                Claude API, auto-generates tailored CVs and logs everything to a
+                                deduplicated tracker with Telegram alerts.
+                            </p>
+                            <div class="project-tags">
+                                <span>n8n</span><span>Claude API</span><span>Telegram bot</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-visual">
+                            <span class="project-mark">JAVA project</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-name">
+                                <h3>Smart Expense</h3>
+                                <span class="project-cat">Personal Finance Tracker</span>
+                            </div>
+                            <p class="project-desc">
+                                A self learned-fintech-grade expense tracker on Java Servlets — session
+                                management, DAO pattern and MySQL stored procedures, with a
+                                Swing desktop client on the same backend.Used this to help understand java syntax
+                            </p>
+                            <div class="project-tags">
+                                <span>Java</span><span>Servlets</span><span>MySQL</span><span>Tomcat</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-visual">
+                            <span class="project-mark">GymAI(java)</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-name">
+                                <h3>AI Gym Workout System</h3>
+                                <span class="project-cat">Recommendation Engine</span>
+                            </div>
+                            <p class="project-desc">
+                                A normalised MySQL database behind a RESTful Flask microservice
+                                that generates personalised workout plans, secured with Java
+                                authentication and covered by TestNG tests.
+                            </p>
+                            <div class="project-tags">
+                                <span>JavaFX</span><span>Flask</span><span>MySQL</span><span>TestNG</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-visual">
+                            <span class="project-mark">ML</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-name">
+                                <h3>Movie Rating Prediction</h3>
+                                <span class="project-cat">ML Prediction Engine</span>
+                            </div>
+                            <p class="project-desc">
+                                End-to-end data wrangling, feature engineering and regression
+                                modelling on the MovieLens dataset — the same discipline behind
+                                data-driven credit scoring.
+                            </p>
+                            <div class="project-tags">
+                                <span>Python</span><span>scikit-learn</span><span>Pandas</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= STATS ================= -->
+        <section class="stats">
+            <div class="container stats-grid">
+                <div class="stat reveal">
+                    <span class="stat-num">05+</span>
+                    <span class="stat-label">Products built end to end</span>
+                </div>
+                <div class="stat reveal">
+                    <span class="stat-num">04</span>
+                    <span class="stat-label">AI-powered systems shipped</span>
+                </div>
+                <div class="stat reveal">
+                    <span class="stat-num">12+</span>
+                    <span class="stat-label">Technologies in active use</span>
+                </div>
+                <div class="stat reveal">
+                    <span class="stat-num">03</span>
+                    <span class="stat-label">Years creating software</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CREDENTIALS ================= -->
+        <section class="credentials section" id="credentials">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-label">Credentials</span>
+                </div>
+
+                <div class="cred-grid">
+                    <div class="cred-card reveal">
+                        <span class="cred-year">2023 — 2026</span>
+                        <h3>BSc Software Development</h3>
+                        <p>KCA University, Nairobi</p>
+                    </div>
+                    <div class="cred-card reveal">
+                        <span class="cred-year">2023</span>
+                        <h3>ICDL Certification</h3>
+                        <p>Strathmore University</p>
+                    </div>
+                    <div class="cred-card reveal">
+                        <span class="cred-year">2023</span>
+                        <h3>Programming &amp; Technology</h3>
+                        <p>JKUAT — Python, JavaScript, UI/UX &amp; Robotics</p>
+                    </div>
+                    <div class="cred-card reveal">
+                        <span class="cred-year">Now</span>
+                        <h3>Currently Exploring</h3>
+                        <p>Docker, CI/CD pipelines &amp; ML</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT (dark) ================= -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-head reveal">
+                    <h2 class="contact-title">Let's<br>talk.</h2>
+                    <p class="contact-sub">
+                        Have a project in mind, or need a developer who owns things
+                        end to end? Tell me about it — I'll get back to you.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-side reveal">
+                        <a class="contact-line" href="mailto:leonjohn7co@gmail.com">
+                            <span class="contact-line-label">Email</span>
+                            <span class="contact-line-value">leonjohn7co@gmail.com</span>
+                        </a>
+                        <a class="contact-line" href="tel:+254790509375">
+                            <span class="contact-line-label">Phone</span>
+                            <span class="contact-line-value">+254 790 509 375</span>
+                        </a>
+                        <div class="contact-line">
+                            <span class="contact-line-label">Location</span>
+                            <span class="contact-line-value">Nairobi, Kenya</span>
+                        </div>
+
                         <div class="social-links">
-                             <ul class="wrapper">
-                                <li class="icon linkedin">
-                                    <a href="https://www.linkedin.com/in/leon-john-144754370" target="_blank">
-                                    <span class="name">Linkedin</span>
-                                    <span><i class="fa-brands fa-linkedin-in"></i></span>
-                                    </a>
-                                </li>
-                                <li class="icon twitter">
-                                    <a href="https://x.com/leonJ0hn" target="_blank">
-                                    <span class="name">Twitter</span>
-                                    <span><i class="fab fa-twitter"></i></span>
-                                    </a>
-                                </li>
-                                <li class="icon instagram">
-                                    <span class="name">Instagram</span>
-                                    <span><i class="fab fa-instagram"></i></span>
-                                </li>
-                                <li class="icon github">
-                                    <a href="https://github.com/leox7" target="_blank">
-                                    <span class="name">Github</span>
-                                    <span><i class="fab fa-github"></i></span>
-                                    </a>
-                                </li>
-                                <li class="icon youtube">
-                                    <a href="https://www.youtube.com/@techyleon.7" target="_blank">
-                                    <span class="name">Youtube</span>
-                                    <span><i class="fab fa-youtube"></i></span>
-                                    </a>
-                                </li>
-                                </ul>               
+                            <a href="https://www.linkedin.com/in/leon-john-144754370" target="_blank" rel="noopener"
+                                aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://github.com/leox7" target="_blank" rel="noopener" aria-label="GitHub"><i
+                                    class="fa-brands fa-github"></i></a>
+                            <a href="https://x.com/leonJ0hn" target="_blank" rel="noopener" aria-label="X / Twitter"><i
+                                    class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://www.youtube.com/@techyleon.7" target="_blank" rel="noopener"
+                                aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                     </div>
-                    
-                    <div class="hero-image">
-                        <div class="profile-image"><img src="images/port img.jpg" alt="my photo"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about" class="section about">
-            <div class="container">
-                <div class="about-content">
-                    <h2 class="section-title">About Me</h2>
-                    <p>
-                        I'm a passionate software developer with expertise in web development, Android app creation, 
-                        and AI automation. With a strong foundation in modern technologies and a keen eye for 
-                        user experience, I help businesses transform their ideas into powerful digital solutions , making work easier and efficient.
-                    </p>
-                    
-                    <div class="about-grid">
-                        <div class="about-card">
-                            <h3>Web Development</h3>
-                            <p>Creating responsive, fast, and user-friendly websites using modern frameworks and technologies.</p>
+                    <form class="contact-form reveal" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="you@email.com" required>
+                            </div>
                         </div>
-                        
-                        <div class="about-card">
-                            <h3>Android Development</h3>
-                            <p>Building native Android applications with intuitive interfaces and robust functionality.</p>
-                        </div>
-                        
-                        <div class="about-card">
-                            <h3>AI Automation</h3>
-                            <p>Implementing intelligent automation solutions to streamline business processes and increase efficiency.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="container">
-                <h2 class="section-title">Skills & Experience</h2>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Frontend Development</h3>
-                        <ul class="skill-list">
-                            <li>HTML5, CSS3, JavaScript</li>
-                            <li>React, Bootstrap</li>
-                            <li>Responsive Design & CSS Frameworks</li>
-                            <li> Modern Build Tools</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>Backend Development</h3>
-                        <ul class="skill-list">
-                            <li>Node.js, Python, Java</li>
-                            <li>Database Design (SQL)</li>
-                            <li>Cloud Services : Vercel</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>Mobile Development</h3>
-                        <ul class="skill-list">
-                            <li>Native Android Development</li>
-                            <li>Java</li>
-                            <li>Android Studio & SDK</li>
-                            <li>Material Design Guidelines</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3>AI & Automation</h3>
-                        <ul class="skill-list">
-                            <li>Machine Learning & AI Integration</li>
-                            <li>Process Automation </li>
-                            <li>API Integration </li>
-                            <li>AI automation tools :n8n and relevance ai</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact">
-            <div class="container">
-                <div class="contact-content">
-                    <h2 class="section-title">Get In Touch</h2>
-                    <p>
-                        Ready to bring your ideas to life? Let's discuss how we can work together 
-                        to create something valuable and amazing.
-                    </p>
-                    
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…"
+                                required></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn">Send Message</button>
+
+                        <button type="submit" class="btn btn-light">Send Message</button>
                     </form>
-                </div> 
+                </div>
             </div>
+
+            <!-- Footer lives inside the dark block -->
+            <footer class="footer">
+                <div class="container footer-inner">
+                    <span>© <span id="year">2026</span> Leon John — Software Developer</span>
+                    <span>Nairobi, Kenya</span>
+                    <a href="#top" class="back-to-top">Back to top ↑</a>
+                </div>
+            </footer>
         </section>
+
     </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Leon John. All rights reserved. Built with passion and modern web technologies.</p>
-        </div>
-    </footer>
-
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle Dark Mode">🌙</button>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
-<!-- End of index.html -->
